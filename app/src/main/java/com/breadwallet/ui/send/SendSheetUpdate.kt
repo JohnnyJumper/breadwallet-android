@@ -51,7 +51,6 @@ const val MAX_DIGITS = 8
 
 @Suppress("TooManyFunctions", "ComplexMethod", "LargeClass")
 object SendSheetUpdate : Update<M, E, F>, SendSheetUpdateSpec {
-
     override fun update(model: M, event: E) = patch(model, event)
 
     override fun onAmountChange(
@@ -171,6 +170,23 @@ object SendSheetUpdate : Update<M, E, F>, SendSheetUpdateSpec {
 
     @Suppress("ComplexCondition")
     override fun onSendClicked(model: M): Next<M, F> {
+        if (model.targetAddress.endsWith(".crypto")) {
+           val task = AsyncResolution().execute(model.targetAddress, model.currencyCode)
+            val result: ResolutionResult = task.get()
+            if (result.error != null) {
+                return next(
+                    model.copy(
+                        targetInputError = M.InputError.Invalid
+                    )
+                )
+            } else if (result.address != null){
+                return restSendLogic(model.copy(targetAddress = result.address))
+            }
+        }
+        return restSendLogic(model)
+    }
+
+    private fun restSendLogic(model: M): Next<M, F> {
         val isBalanceTooLow = model.isTotalCostOverBalance
         val isAmountBlank = model.rawAmount.isBlank() || model.amount.isZero()
         val isTargetBlank = model.targetAddress.isBlank()

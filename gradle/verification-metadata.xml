@@ -128,6 +128,12 @@
             <trusting group="org.codehaus.plexus"/>
          </trusted-key>
          <trusted-key id="ff6e2c001948c5f2f38b0cc385911f425ec61b51" group="junit" name="junit" version="4.13"/>
+         <trusted-key id="41a1a08c62fca78b79d3081164a16faaec16a4be" group="org.apache.commons" name="commons-math3" version="3.6.1"/>
+         <trusted-key id="d2ea6bcd43b3663cdf6222c135ae09fd38f0cfae" group="com.esaulpaugh" name="headlong" version="1.4.8"/>
+         <trusted-key id="5b9180e39dd128855bba06ffee5176c6b29cba88" group="com.unstoppabledomains.resolution" version="1.0.6">
+            <trusting group="org.apache.commons"/>
+            <trusting group="com.esaulpaugh:headlong"/>
+         </trusted-key>
       </trusted-keys>
    </configuration>
    <components>
@@ -2012,5 +2018,16 @@
             <pgp value="120d6f34e627ed3a772ebbfe55c7e5e701832382"/>
          </artifact>
       </component>
+      <component group="com.unstoppabledomains.resolution" name="resolution" version="1.0.6">
+         <artifact name="resolution-1.0.6.jar">
+            <sha1 value="f23f1bc734bc705ce58852ab59738c338d611eae"/>
+            <md5 value="889a79065e3ed1393936b343d82e6629"/>
+         </artifact>
+         <artifact name="resolution-1.0.6.pom">
+            <sha1 value="b1593a70d08c760dfd643425f70cff354160afbd"/>
+            <md5 value="a823bc74bfcf39a39c1427dafbc0c987"/>
+         </artifact>
+      </component>
    </components>
 </verification-metadata>
+
