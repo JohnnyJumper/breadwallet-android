@@ -1,9 +1,10 @@
 package com.breadwallet.ui.send
 
 import android.os.AsyncTask
+import com.unstoppabledomains.exceptions.NamingServiceException
 import com.unstoppabledomains.resolution.Resolution
 
-data class ResolutionResult(val error: Exception?, val address: String?) {}
+data class ResolutionResult(val error: NamingServiceException?, val address: String?) {}
 
 class AsyncResolution : AsyncTask<String, String, ResolutionResult>() {
     private val tool: Resolution =
@@ -15,7 +16,8 @@ class AsyncResolution : AsyncTask<String, String, ResolutionResult>() {
         return try {
             val address = this.tool.addr(domain, currency)
             ResolutionResult(null, address)
-        } catch(err: Exception) {
+        } catch(err: NamingServiceException) {
+            err.printStackTrace();
             ResolutionResult(err, null)
         }
     }

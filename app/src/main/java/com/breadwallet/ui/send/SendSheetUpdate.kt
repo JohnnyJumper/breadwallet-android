@@ -174,6 +174,7 @@ object SendSheetUpdate : Update<M, E, F>, SendSheetUpdateSpec {
            val task = AsyncResolution().execute(model.targetAddress, model.currencyCode)
             val result: ResolutionResult = task.get()
             if (result.error != null) {
+                // need to use error.code to determine the appropriate error message
                 return next(
                     model.copy(
                         targetInputError = M.InputError.Invalid
