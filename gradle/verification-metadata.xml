@@ -129,6 +129,12 @@
             <trusting group="org.codehaus.plexus"/>
          </trusted-key>
          <trusted-key id="ff6e2c001948c5f2f38b0cc385911f425ec61b51" group="junit" name="junit" version="4.13"/>
+         <trusted-key id="41a1a08c62fca78b79d3081164a16faaec16a4be" group="org.apache.commons" name="commons-math3" version="3.6.1"/>
+         <trusted-key id="d2ea6bcd43b3663cdf6222c135ae09fd38f0cfae" group="com.esaulpaugh" name="headlong" version="3.4.1"/>
+         <trusted-key id="5b9180e39dd128855bba06ffee5176c6b29cba88" group="com.unstoppabledomains.resolution" version="1.0.8">
+            <trusting group="org.apache.commons"/>
+            <trusting group="com.esaulpaugh:headlong"/>
+         </trusted-key>
       </trusted-keys>
    </configuration>
    <components>
@@ -2043,6 +2049,21 @@
       <component group="org.yaml" name="snakeyaml" version="1.24">
          <artifact name="snakeyaml-1.24.jar">
             <pgp value="120d6f34e627ed3a772ebbfe55c7e5e701832382"/>
+         </artifact>
+      </component>
+      <component group="com.unstoppabledomains.resolution" name="resolution" version="1.0.8">
+         <artifact name="resolution-1.0.8.jar">
+            <sha1 value="fdfaef2a6440b12ddc9835e893a85292f3967e2b"/>
+            <md5 value="22b68c4976f9b95e9a54f395f2bc150b"/>
+         </artifact>
+         <artifact name="resolution-1.0.8.pom">
+            <sha1 value="39180ef971b259d6351635919cfd72d1d55a4246"/>
+            <md5 value="7cc753641e4381b05db3897dcea965ca"/>
+         </artifact>
+      </component>
+      <component group="com.esaulpaugh" name="headlong" version="3.4.1">
+         <artifact name="headlong-3.4.1.jar">
+            <sha1 value="524a189432ed2a0b5d7eed94b393629a503b1244"/>
          </artifact>
       </component>
    </components>
